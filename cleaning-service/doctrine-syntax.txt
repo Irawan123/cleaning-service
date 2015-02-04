@@ -1,0 +1,17 @@
+//Generate php class from xml mapping
+doctrine-module orm:generate-entities ./module/Application/src
+
+//Validate schema
+doctrine-module orm:validate-schema
+
+//Create database
+doctrine-module orm:schema-tool:create
+
+//Update database
+doctrine-module orm:schema-tool:update --force
+
+//Database
+cleaning-service
+
+//url Api
+http://localhost/cleaning-service/public/api/master/dummy
