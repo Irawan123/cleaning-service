@@ -1,0 +1,61 @@
+<?php
+
+	$title = 'Ubah Customer';
+	$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<br />
+
+<div class="content">
+
+<form method="POST" name="customer" id="customer" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Nama</label>
+	    <div class="col-sm-10">
+  			<input type="text" name="nama" id="nama" class="form-control" value= <?php 
+			if(!empty($this->request)){
+				echo $this->request['nama']; 
+			}?>>
+
+
+	    </div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Perusahaan </label>
+	    <div class="col-sm-10">
+  			<input type="text" name="perusahaan" id="perusahaan" class="form-control" value= <?php 
+			if(!empty($this->request)){
+				echo $this->request['perusahaan']; 
+			}?>>
+	    </div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Nomor Telepon</label>
+	    <div class="col-sm-10">
+  			<input type="text" name="nomorTelepon" id="nomorTelepon" class="form-control" value= <?php 
+			if(!empty($this->request)){
+				echo $this->request['nomorTelepon']; 
+			}?>>
+	    </div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Website</label>
+	    <div class="col-sm-10">
+  			<input type="text" name="website" id="website" class="form-control" value= <?php 
+			if(!empty($this->request)){
+				echo $this->request['website']; 
+			}?>>
+	    </div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" name="submit" class="btn btn-default">Submit</button>
+			<a href="<?php echo $this->url('customer', array('action'=>'index'))?>" class="btn btn-default">Cancel</a>
+		</div>
+	</div>
+
+</form>
+
+</div>

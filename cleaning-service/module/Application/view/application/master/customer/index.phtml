@@ -1,0 +1,97 @@
+<?php
+ 
+	$title = 'Daftar Customer';
+	$this->headTitle($title);
+
+	$no = $page_number;
+
+?>
+
+<?php
+	if (count($this->flashMessages)>0) {
+		foreach ($this->flashMessages as $msg) {
+			echo '<h4><span class="label label-info">'. $msg . '</span></h4>';
+		}
+	}
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<form role="form" method="POST">
+	<div class="form-group">
+		<label><span>Nama Customer : </span>
+		<input type="text" name="filter_nama" id="filter_nama" class="form-control" placeholder="Nama" <?php 
+		if(isset($_POST['filter_nama'])) echo 'value="'.$_POST['filter_nama'].'"';
+		?>>
+		</label>
+	</div>
+	<div class="form-group">
+		<label><span>Telp Customer : </span>
+		<input type="text" name="filter_telp" id="filter_telp" class="form-control" placeholder="No Telp" <?php 
+		if(isset($_POST['filter_telp'])) echo 'value="'.$_POST['filter_telp'].'"';
+		?>>
+		</label>
+	</div>
+	<div class="form-group">
+		<button type="submit" name="filter_cari" id="filter_cari" value="cari" class="btn btn-default">Filter</button>
+		<button type="submit" name="filter_showall" id="filter_showall" value="showall" class="btn btn-default">Show All</button>
+	</div>
+</form>
+
+
+
+<p>
+<a class="btn btn-success" href="<?php echo $this->url('customer', array('action'=>'add'));?>">Tambah Customer</a>
+</p>
+
+<?php
+	echo $this->paginationControl($this->customers,
+                                    'Sliding', // All, Elastic, Jumping, Sliding
+                                    'partial/search_pagination.phtml',
+                                    array('route' => 'customer')
+                                );								
+?>
+
+<table class="table">
+<tr>
+	<th>No </th>
+	<th>Nama</th>
+	<th>Perusahaan</th>
+	<th>No Telp</th>
+	<th>Website</th>
+	<th>&nbsp;</th>
+</tr>
+<?php foreach ($customers as $customer) : ?>
+<tr>
+	<td><?php echo $no++; ?></td>
+	<td><?php echo $this->escapeHtml($customer->getNama());?></td>
+	<td><?php echo $this->escapeHtml($customer->getPerusahaan());?></td>
+	<td><?php echo $this->escapeHtml($customer->getNomorTelepon());?></td>
+	<td><?php echo $this->escapeHtml($customer->getWebsite());?></td>
+	<td>
+	<a href="<?php echo $this->url('customer',
+	 array('action'=>'edit', 'id' => $customer->getId()));?>">Edit</a>
+	<a href="<?php echo $this->url('customer',
+	 array('action'=>'delete', 'id' => $customer->getId()));?>">Delete</a>
+	</td>
+</tr>
+<?php endforeach; ?>
+<?php
+	if(count($customers)<=0){
+		echo '<tr><td></td><td>Data Not Found</td><td></td><td></td></tr>';
+	}
+?>
+</table>
+ 
+<?php
+	echo $this->paginationControl($this->customers,
+                                    'Sliding', // All, Elastic, Jumping, Sliding
+                                    'partial/search_pagination.phtml',
+                                    array('route' => 'customer')
+                                );
+									
+?>
+
+<p>
+<a class="btn btn-success" href="<?php echo $this->url('customer', array('action'=>'add'));?>">Tambah Customer</a>
+</p>

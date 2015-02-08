@@ -9,6 +9,10 @@ return array(
 
         'Application\SkeletonApp\Master\Dummy' => 'Application\SkeletonApp\Master\Dummy\DummyController',
 
+        'Application\SkeletonApp\Master\Pegawai' => 'Application\SkeletonApp\Master\Pegawai\PegawaiController',
+
+        'Application\SkeletonApp\Master\Customer' => 'Application\SkeletonApp\Master\Customer\CustomerController',
+
         /**
     	* API
     	*/

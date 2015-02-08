@@ -35,7 +35,7 @@ return array(
         'dummy' => array(
             'type'    => 'Segment',
             'options' => array(
-                'route'    => '/master/dummy/[/:action][/:id]',
+                'route'    => '/master/dummy[/:action][/:id]',
                 'constraints' => array(
                     'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                 ),
@@ -43,6 +43,36 @@ return array(
                     '__NAMESPACE__' => 'Application\SkeletonApp\Master',
                     'action'     => 'index',
                     'controller' => 'Application\SkeletonApp\Master\Dummy',
+                ),
+            ),
+        ),
+
+        'pegawai' => array(
+            'type'    => 'Segment',
+            'options' => array(
+                'route'    => '/master/pegawai[/:action][/:id]',
+                'constraints' => array(
+                    'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                ),
+                'defaults' => array(
+                    '__NAMESPACE__' => 'Application\SkeletonApp\Master',
+                    'action'     => 'index',
+                    'controller' => 'Application\SkeletonApp\Master\Pegawai',
+                ),
+            ),
+        ),
+
+        'customer' => array(
+            'type'    => 'Segment',
+            'options' => array(
+                'route'    => '/master/customer[/:action][/:id]',
+                'constraints' => array(
+                    'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                ),
+                'defaults' => array(
+                    '__NAMESPACE__' => 'Application\SkeletonApp\Master',
+                    'action'     => 'index',
+                    'controller' => 'Application\SkeletonApp\Master\Customer',
                 ),
             ),
         ),

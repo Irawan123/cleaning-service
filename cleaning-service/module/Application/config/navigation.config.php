@@ -15,6 +15,16 @@ return array(
 					'route' => 'dummy',
 					'action' => 'index',
 				),
+				array(
+					'label' => 'Customer',
+					'route' => 'customer',
+					'action' => 'index',
+				),
+				array(
+					'label' => 'Pegawai',
+					'route' => 'pegawai',
+					'action' => 'index',
+				),
 
 			),
 		),
