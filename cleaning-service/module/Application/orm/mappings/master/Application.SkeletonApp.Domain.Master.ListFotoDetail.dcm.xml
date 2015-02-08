@@ -1,0 +1,17 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Application\SkeletonApp\Domain\Master\ListFotoDetail" table="list_foto_detail">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="list_foto_detail_seq" allocation-size="1" initial-value="1" />
+        </id>
+
+        <field name="nama" column="nama" type="text" nullable="false" />
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\FotoDetail" field="foto_detail" mapped-by="list_foto_detail" >
+        </one-to-many>
+		
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,42 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Application\SkeletonApp\Domain\Master\Pegawai" table="pegawai">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="pegawai_seq" allocation-size="1" initial-value="1" />
+
+        </id>
+
+        <field name="nama" column="nama" type="text" nullable="false" />
+        <field name="alamat" column="alamat" type="text" nullable="true" />
+        <field name="nomorTelepon" column="nomor_telepon" type="text" nullable="true" />
+        <field name="email" column="email" type="text" nullable="true" />
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\User" field="user" mapped-by="pegawai" >
+        </one-to-many>	
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\FotoSebelum" field="foto_sebelum" mapped-by="pegawai" >
+        </one-to-many>
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\FotoSesudah" field="foto_sesudah" mapped-by="pegawai" >
+        </one-to-many>
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\FotoTemuan" field="foto_temuan" mapped-by="pegawai" >
+        </one-to-many>
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\FotoSebelumNonRoutine" field="foto_sebelum_non_routine" mapped-by="pegawai" >
+        </one-to-many>
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\FotoSesudahNonRoutine" field="foto_sesudah_non_routine" mapped-by="pegawai" >
+        </one-to-many>
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\FotoProsesNonRoutine" field="foto_proses_non_routine" mapped-by="pegawai" >
+        </one-to-many>
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\DetailPekerjaan" field="detail_pekerjaan" mapped-by="pegawai" >
+        </one-to-many>
+		
+    </entity>
+</doctrine-mapping>

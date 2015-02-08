@@ -1,0 +1,20 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Application\SkeletonApp\Domain\Master\Zona" table="zona">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="zona_seq" allocation-size="1" initial-value="1" />
+
+        </id>
+
+        <field name="nama" column="nama" type="text" nullable="false" />
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\Lokasi" field="lokasi" mapped-by="zona" >
+        </one-to-many>	
+
+		<many-to-one target-entity="Application\SkeletonApp\Domain\Master\Customer" field="customer" inversed-by="zona" />		
+		
+    </entity>
+</doctrine-mapping>

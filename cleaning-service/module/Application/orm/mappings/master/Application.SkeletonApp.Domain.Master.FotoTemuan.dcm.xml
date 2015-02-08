@@ -1,0 +1,23 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Application\SkeletonApp\Domain\Master\FotoTemuan" table="foto_temuan">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="foto_temuan_seq" allocation-size="1" initial-value="1" />
+
+        </id>
+
+        <field name="nama" column="nama" type="string" length="100" unique="true" />
+        <field name="jabatan" column="jabatan" type="text" nullable="true" />
+        <field name="foto" column="foto" type="text" nullable="true" />
+
+		<many-to-one target-entity="Application\SkeletonApp\Domain\Master\Lokasi" field="lokasi" inversed-by="foto_temuan" />
+
+		<many-to-one target-entity="Application\SkeletonApp\Domain\Master\Pegawai" field="pegawai" inversed-by="foto_temuan" />
+
+		<many-to-one target-entity="Application\SkeletonApp\Domain\Master\ListTemuan" field="list_temuan" inversed-by="foto_temuan" />
+		
+    </entity>
+</doctrine-mapping>

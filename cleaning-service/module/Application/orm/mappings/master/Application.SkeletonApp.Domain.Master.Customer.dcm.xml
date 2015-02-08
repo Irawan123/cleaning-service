@@ -1,0 +1,22 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Application\SkeletonApp\Domain\Master\Customer" table="customer">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+            <sequence-generator sequence-name="customer_seq" allocation-size="1" initial-value="1" />
+        </id>
+
+        <field name="nama" column="nama" type="text" nullable="false" />
+        <field name="perusahaan" column="perusahaan" type="text" nullable="false" />
+        <field name="website" column="website" type="text" nullable="true" />
+        <field name="nomorTelepon" column="nomor_telepon" type="text" nullable="true" />
+
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\Zona" field="zona" mapped-by="customer" >
+        </one-to-many>
+		<one-to-many target-entity="Application\SkeletonApp\Domain\Master\User" field="user" mapped-by="customer" >
+        </one-to-many>
+		
+    </entity>
+</doctrine-mapping>
